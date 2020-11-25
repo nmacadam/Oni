@@ -3,7 +3,7 @@
 
 using UnityEngine;
 
-namespace Oni
+namespace Oni.Internal
 {
     /// <summary>
     /// Activation Unity events

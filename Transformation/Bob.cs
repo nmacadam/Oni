@@ -1,6 +1,7 @@
 ﻿// ONI, Copyright (c) Nathan MacAdam, All rights reserved. 
 // MIT License (See LICENSE file)
 
+using Oni.Internal;
 using UnityEngine;
 
 namespace Oni.Transformation

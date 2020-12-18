@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f111b7439af0bd4b8ec7ac6ae6df55f, type: 3}
+  m_Name: Scene Director
+  m_EditorClassIdentifier: 
+  _loadingScreenScene:
+    _sceneAsset: {fileID: 102900000, guid: 99c672a1d3b862a44abe579101d727ef, type: 3}
+    _sceneName: Loading Screen
+    _scenePath: Assets/_DEMOS/Loading Screen.unity
+    _buildIndex: 3
+  _loadingScreenUI: {fileID: 2092622226556644062, guid: cb9030c138e3d7249bab5eac74778706,
+    type: 3}
+  _defaultTransition: {fileID: 8808997049263539691, guid: 0c3115de500ced4458698a1a3a312bd3,
+    type: 3}

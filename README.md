@@ -4,6 +4,7 @@
 Oni is a collection of scripts and tools I've created as well as some open source third-party scripts I've integrated into my own workflow.  While working in Unity, I realized there's a lot of common, reusable, functionality that I've reimplemented over and over again and I figured I should take the time to put it all in one place!
 
 ## Overview
+### Scripting
 - Attributes
 
    Property attributes for readability and control
@@ -36,6 +37,14 @@ Oni is a collection of scripts and tools I've created as well as some open sourc
 
    Simple and reusable object movement scripts e.g. bobbing, rotating, etc.
 
+### Tools
+- Editor Hotkeys
+
+   Simple and reusable object movement scripts e.g. bobbing, rotating, etc.
+
+- Project Window Details
+
+   Display optional and toggleable info about assets in the Project Window (ex. type, file size, etc.)
 
 ## Installation
 ### Git

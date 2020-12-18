@@ -30,7 +30,7 @@ namespace Oni.Patterns
 		where T : MonoBehaviour, IPoolable
 	{
 		[Tooltip("Provide a cloneable instance to initialize the pool with (typically a prefab)")]
-		[SerializeField] private T _clonableInstance;
+		[SerializeField] private T _clonableInstance = default;
 		[Tooltip("How many instances should the pool start with?")]
 		[SerializeField] private int _initialSize = 1;
 

@@ -40,7 +40,7 @@ Oni is a collection of scripts and tools I've created as well as some open sourc
 ### Tools
 - Editor Hotkeys
 
-   Simple and reusable object movement scripts e.g. bobbing, rotating, etc.
+   Blender-like numpad hotkeys for manipulating the scene-view camera
 
 - Project Window Details
 

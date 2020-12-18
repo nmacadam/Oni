@@ -1,5 +1,4 @@
-﻿// ONI, Copyright (c) Nathan MacAdam, All rights reserved. 
-// MIT License (See LICENSE file)
+﻿// adapted from https://medium.com/@trepala.aleksander/serializereference-in-unity-b4ee10274f48
 
 using System;
 using UnityEngine;

@@ -28,6 +28,10 @@ Oni is a collection of scripts and tools I've created as well as some open sourc
 
    Extended math library supporting additional vector functions, bezier curves, and more
 
+- Patterns
+
+   Common game development design patterns like object pooling
+
 - Transformation
 
    Simple and reusable object movement scripts e.g. bobbing, rotating, etc.

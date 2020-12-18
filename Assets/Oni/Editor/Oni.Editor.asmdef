@@ -1,0 +1,17 @@
+{
+    "name": "Oni.Editor",
+    "references": [
+        "GUID:8ae8f4bfcc232b84da98d889a0300539"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

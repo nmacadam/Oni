@@ -10,9 +10,11 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
+# Ignore Demo assets
+/[Aa]ssets/Oni/_DEMOS/
+
 # Never ignore Asset meta data
-# !/[Aa]ssets/**/*.meta
-*.meta
+!/[Aa]ssets/**/*.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*

@@ -53,13 +53,10 @@ namespace Oni.Editor
 				case KeyCode.Keypad7:
 					TopView(sceneView);
                     break;
-
 				case KeyCode.Keypad5:
 					ToggleOrthographic(sceneView);
                     break;
 			}
-
-            e.Use();
         }
 
 		[MenuItem("Tools/Oni/View/Toggle Orthographic")]

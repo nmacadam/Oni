@@ -1,5 +1,5 @@
 {
-    "name": "Oni.Tests",
+    "name": "Oni.PlayMode.Tests",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"

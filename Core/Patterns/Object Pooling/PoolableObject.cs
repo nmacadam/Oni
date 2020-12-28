@@ -11,8 +11,6 @@ namespace Oni.Patterns
 	public interface IPoolable
 	{
 		IObjectPool Origin { get; set; }
-		void SetUp();
-		void TearDown();
 		void Return();
 	}
 
@@ -24,22 +22,11 @@ namespace Oni.Patterns
 		// Pool to return object
 		public IObjectPool Origin { get; set; }
 
-		/// <summary> Prepares instance for use </summary>
-		public virtual void SetUp()
-		{
-			// ...
-		}
-
-		/// <summary> Resets instance to prepare for returning </summary>
-		public virtual void TearDown()
-		{
-			// ...
-		}
+		// Add Set Up and Tear down functions in child class as necessary
 
 		/// <summary> Returns instance to pool </summary>
 		public virtual void Return()
 		{
-			TearDown();
 			Origin.Return(this);
 		}
 	}

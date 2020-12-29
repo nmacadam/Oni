@@ -1,4 +1,8 @@
-﻿// adapted from https://medium.com/@trepala.aleksander/serializereference-in-unity-b4ee10274f48
+﻿// Original work by Aleksander Trępała
+// https://medium.com/@trepala.aleksander/serializereference-in-unity-b4ee10274f48
+
+// Modified for ONI, Copyright (c) Nathan MacAdam, All rights reserved. 
+// MIT License (See LICENSE file)
 
 using System;
 using UnityEngine;

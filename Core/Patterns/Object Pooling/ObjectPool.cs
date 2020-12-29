@@ -1,5 +1,11 @@
-﻿// Adapted from https://www.patrykgalach.com/2019/04/01/how-to-implement-object-pooling-in-unity/
-// and https://www.youtube.com/watch?v=uxm4a0QnQ9E
+﻿// ONI, Copyright (c) Nathan MacAdam, All rights reserved. 
+// MIT License (See LICENSE file)
+
+// References:
+// Patryk Gałach, How to implement Object Pooling in Unity
+//		https://www.patrykgalach.com/2019/04/01/how-to-implement-object-pooling-in-unity/
+// Jason Weimann, Object Pooling (in depth) - Game Programming Patterns in Unity & C#
+//		https://www.youtube.com/watch?v=uxm4a0QnQ9E
 
 using System.Collections.Generic;
 using UnityEngine;

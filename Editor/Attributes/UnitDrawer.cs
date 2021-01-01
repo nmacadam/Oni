@@ -3,8 +3,9 @@
 
 using UnityEditor;
 using UnityEngine;
+using Oni.Attributes;
 
-namespace Oni.Attributes.Editor
+namespace Oni.Editor.Attributes
 {
 	/// <summary>
 	/// Drawer for drawing unit attribute

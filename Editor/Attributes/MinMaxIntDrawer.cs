@@ -28,7 +28,7 @@ using UnityEditor;
 using Oni.Attributes;
 using Oni.Editor;
 
-namespace Oni.Attributes.Editor
+namespace Oni.Editor.Attributes
 {
 	[CustomPropertyDrawer(typeof(MinMaxIntAttribute))]
 	public class MinMaxIntDrawer: PropertyDrawer 

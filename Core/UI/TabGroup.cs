@@ -78,8 +78,10 @@ namespace Oni.UI
 			}
 		}
 
-		private void Start()
+		protected override void Start()
 		{
+			base.Start();
+			
 			if (_selectedTab != null)
 			{
 				_selectedTab.targetGraphic.color = _selectedTab.colors.selectedColor;

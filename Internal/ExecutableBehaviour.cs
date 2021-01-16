@@ -11,6 +11,7 @@ namespace Oni.Internal
     public enum UpdateMethod
     {
         Default,
+        Fixed,
         Late,
         External
     }
@@ -30,6 +31,14 @@ namespace Oni.Internal
         private void Update()
         {
             if (UpdateMethod == UpdateMethod.Default) 
+            {
+                Execute();
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (UpdateMethod == UpdateMethod.Fixed) 
             {
                 Execute();
             }

@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System;
 using Oni.Tools;
 
-namespace Dream.Editor
+namespace Oni.Editor
 {
 	[CustomEditor(typeof(Note))]
 	public class NoteEditor : UnityEditor.Editor 

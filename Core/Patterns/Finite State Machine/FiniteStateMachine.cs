@@ -3,35 +3,17 @@
 
 using System;
 using System.Collections.Generic;
-using Oni.Internal;
 
 namespace Oni.Patterns
 {
     /// <summary>
     /// Generic class for creating enumeration based finite state machines
     /// </summary>
-    public abstract class FiniteStateMachine<TStateEnumeration, TStateType> : ExecutableBehaviour where TStateEnumeration : Enum where TStateType : IState<TStateEnumeration>
+	[Serializable]
+    public class FiniteStateMachine<TStateEnumeration, TStateType>
+		where TStateEnumeration : Enum 
+		where TStateType : IState<TStateEnumeration>
 	{
-		// Properties
-		public TStateType ActiveState => _activeState;
-
-		// Callbacks
-		/// <summary>
-		/// Fired before a state transition occurs
-		/// </summary>
-		public Action<TStateEnumeration, TStateEnumeration> OnBeforeStateTranstion = delegate { };
-		/// <summary>
-		/// Fired after a state transition has occured
-		/// </summary>
-		public Action<TStateEnumeration, TStateEnumeration> OnPostStateTranstion = delegate { };
-
-		// Require default values in concrete implementation
-		protected abstract Dictionary<TStateEnumeration, TStateType> states { get; }
-		protected abstract TStateEnumeration entryState { get; }
-
-		// Internal types and data structures
-		private TStateType _activeState;
-
 		private struct Transition 
 		{
 			public TStateEnumeration FromState;
@@ -45,8 +27,38 @@ namespace Oni.Patterns
 			public Func<TStateEnumeration, bool> Condition;
 		}
 
+		private TStateType _activeState;
+		private TStateEnumeration _entryState;
+		private Dictionary<TStateEnumeration, TStateType> _states;
+
 		private List<Transition> _transitions = new List<Transition>();
         private List<AnyTransition> _anyTransitions = new List<AnyTransition>();
+
+		private Action<TStateEnumeration, TStateEnumeration> _onBeforeStateTranstion = delegate { };
+		private Action<TStateEnumeration, TStateEnumeration> _onPostStateTranstion = delegate { };
+
+		public FiniteStateMachine(TStateEnumeration entryState, Dictionary<TStateEnumeration, TStateType> states)
+		{
+			_entryState = entryState;
+			_states = states;
+
+			// Set the state machine to the entry state
+			_activeState = states[_entryState];
+		}
+		
+		protected TStateEnumeration entryState => _entryState;
+		protected Dictionary<TStateEnumeration, TStateType> states => _states;
+
+		public TStateType ActiveState => _activeState;
+
+		/// <summary>
+        /// Fired before a state transition occurs
+        /// </summary>
+        public Action<TStateEnumeration, TStateEnumeration> OnBeforeStateTranstion { get => _onBeforeStateTranstion; set => _onBeforeStateTranstion = value; }
+		/// <summary>
+        /// Fired after a state transition has occured
+        /// </summary>
+        public Action<TStateEnumeration, TStateEnumeration> OnPostStateTranstion { get => _onPostStateTranstion; set => _onPostStateTranstion = value; }
 
 		/// <summary>
 		/// Force a transition to the given state
@@ -92,11 +104,7 @@ namespace Oni.Patterns
 		/// <summary>
 		/// Checks defined transition conditions and updates the state if any are valid
 		/// </summary>
-		/// <remarks>
-		/// This method will typically be automatically executed based on the <see cref="UpdateMethod"/>.
-		/// Call manually if <see cref="UpdateMethod"/> is set to External
-		/// </remarks>
-        public override void Execute()
+        public void Evaluate()
         {
 			// Check for from-to transitions
             foreach (var transition in _transitions)
@@ -123,11 +131,5 @@ namespace Oni.Patterns
 				}
             }
         }
-
-        protected virtual void Awake() 
-		{
-			// Set the state machine to the entry state
-			_activeState = states[entryState];
-		}
 	}
 }

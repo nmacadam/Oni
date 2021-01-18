@@ -9,7 +9,7 @@ namespace Oni.Patterns
     /// <summary>
     /// Generic class for creating enumeration based finite state machines
     /// </summary>
-	[Serializable]
+	//[Serializable]
     public class FiniteStateMachine<TStateEnumeration, TStateType>
 		where TStateEnumeration : Enum 
 		where TStateType : IState<TStateEnumeration>
@@ -37,6 +37,15 @@ namespace Oni.Patterns
 		private Action<TStateEnumeration, TStateEnumeration> _onBeforeStateTranstion = delegate { };
 		private Action<TStateEnumeration, TStateEnumeration> _onPostStateTranstion = delegate { };
 
+		/// <remarks>
+		/// This is for more flexible initialization in child implementations; Make sure to
+		/// set the FSM to its entry point state in your initalization implementation by using SetActiveState
+		/// </remarks>
+		protected FiniteStateMachine()
+		{
+			
+		}
+
 		public FiniteStateMachine(TStateEnumeration entryState, Dictionary<TStateEnumeration, TStateType> states)
 		{
 			_entryState = entryState;
@@ -46,8 +55,8 @@ namespace Oni.Patterns
 			_activeState = states[_entryState];
 		}
 		
-		protected TStateEnumeration entryState => _entryState;
-		protected Dictionary<TStateEnumeration, TStateType> states => _states;
+		protected TStateEnumeration entryState { get => _entryState; set => _entryState = value; }
+		protected Dictionary<TStateEnumeration, TStateType> states { get => _states; set => _states = value; }
 
 		public TStateType ActiveState => _activeState;
 
@@ -61,12 +70,24 @@ namespace Oni.Patterns
         public Action<TStateEnumeration, TStateEnumeration> OnPostStateTranstion { get => _onPostStateTranstion; set => _onPostStateTranstion = value; }
 
 		/// <summary>
-		/// Force a transition to the given state
+		/// Set the active state without invoking transition callbacks
 		/// </summary>
-		/// <param name="stateType">The enumeration value representing the requested state</param>
-		public void TransitionTo(TStateEnumeration stateType)
+		/// <remarks>
+		/// This is for more flexible initialization in child implementations
+		/// </remarks>
+		/// <param name="state">The enumeration value representing the state to go to</param>
+		protected void SetActiveState(TStateEnumeration state)
 		{
-			var from = _activeState.State;
+			_activeState = states[state];
+		}
+
+        /// <summary>
+        /// Force a transition to the given state
+        /// </summary>
+        /// <param name="stateType">The enumeration value representing the requested state</param>
+        public void TransitionTo(TStateEnumeration stateType)
+		{
+			var from = _activeState.ID;
 
 			OnBeforeStateTranstion.Invoke(from, stateType);
 			_activeState = states[stateType];
@@ -110,24 +131,24 @@ namespace Oni.Patterns
             foreach (var transition in _transitions)
             {
 				// generics prevent just saying 'transition.FromState != _activeState.State'
-				if (!EqualityComparer<TStateEnumeration>.Default.Equals(transition.FromState, _activeState.State))
+				if (!EqualityComparer<TStateEnumeration>.Default.Equals(transition.FromState, _activeState.ID))
 				{
 					continue;
 				}
-                else if (transition.Condition.Invoke(_activeState.State))
+                else if (transition.Condition.Invoke(_activeState.ID))
 				{
 					TransitionTo(transition.ToState);
-					break;
+					return;
 				}
             }
 
 			// check for any transitions
             foreach (var anyTransition in _anyTransitions)
             {
-                if (anyTransition.Condition.Invoke(_activeState.State))
+                if (anyTransition.Condition.Invoke(_activeState.ID))
 				{
 					TransitionTo(anyTransition.ToState);
-					break;
+					return;
 				}
             }
         }

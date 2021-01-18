@@ -14,6 +14,6 @@ namespace Oni.Patterns
     /// <typeparam name="TStateEnumeration">Enum of state IDs</typeparam>
     public interface IState<TStateEnumeration> where TStateEnumeration : System.Enum
 	{
-		TStateEnumeration State { get; }
+		TStateEnumeration ID { get; }
 	}
 }

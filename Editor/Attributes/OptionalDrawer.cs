@@ -1,5 +1,5 @@
-﻿// Dream Frontier, Copyright (c) DARUMA WORKS, All rights reserved.
-// Author: Nathan MacAdam
+﻿// ONI, Copyright (c) Nathan MacAdam, All rights reserved. 
+// MIT License (See LICENSE file)
 
 using Oni.Attributes;
 using UnityEditor;

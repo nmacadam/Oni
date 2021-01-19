@@ -14,6 +14,7 @@ namespace Oni.Editor.Attributes
 	public class LockInPlayModeDrawer : PropertyDrawer
 	{
 		private const int _heightPadding = 4;
+		private const int _sizePadding = 2;
 
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 		{
@@ -26,7 +27,7 @@ namespace Oni.Editor.Attributes
 			GUIStyle lockStyle = new GUIStyle();
 			lockStyle.padding = new RectOffset(0, 0, 0, 0);
 
-			Rect iconPosition = new Rect(EditorGUIUtility.labelWidth, position.y + _heightPadding, lockOn.image.height, lockOn.image.height);
+			Rect iconPosition = new Rect(EditorGUIUtility.labelWidth + 2, position.y + _heightPadding, lockOn.image.height + _sizePadding, lockOn.image.height + _sizePadding);
 
 			if (EditorApplication.isPlaying)
 			{
@@ -37,7 +38,8 @@ namespace Oni.Editor.Attributes
 
 			// Unity handles lists differently than normal fields; using the LabelField approach doesn't work for lists.
 
-			GUI.DrawTexture(iconPosition, EditorApplication.isPlaying ? lockOn.image : lockOff.image);
+			//GUI.DrawTexture(iconPosition, EditorApplication.isPlaying ? lockOn.image : lockOff.image);
+			EditorGUI.LabelField(iconPosition, EditorApplication.isPlaying ? lockOn : lockOff);
 			//EditorGUI.LabelField(iconPosition, EditorApplication.isPlaying ? lockOn : lockOff, lockStyle);
 
 			if (EditorApplication.isPlaying)

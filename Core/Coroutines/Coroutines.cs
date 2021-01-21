@@ -14,6 +14,18 @@ namespace Oni
             else yield return new WaitForSecondsRealtime(delay);
             action.Invoke();
         }
+
+        public static IEnumerator ExecuteWhen(System.Func<bool> predicate, System.Action onConditionMet)
+		{
+			yield return new WaitUntil(predicate);
+			onConditionMet();
+		}
+
+        public static IEnumerator ExecuteWhenOrTimeOut(System.Func<bool> predicate, float timeOutAfter, System.Action onConditionMet)
+		{
+			yield return new WaitUntilOrTimeOut(predicate, timeOutAfter);
+			onConditionMet();
+		}
     }
 
     public class WaitUntilOrTimeOut : CustomYieldInstruction

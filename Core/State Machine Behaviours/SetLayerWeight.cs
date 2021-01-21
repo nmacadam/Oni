@@ -12,8 +12,8 @@ namespace Oni.Animation
 	public class SetLayerWeight : SetParameterValue
 	{
 		[AnimatorLayer]
-		[SerializeField] private int _layerIndex;
-    	[SerializeField] private float _weight;
+		[SerializeField] private int _layerIndex = 0;
+    	[SerializeField] private float _weight = 0;
 
 		private float _initial;
 

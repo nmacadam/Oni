@@ -53,5 +53,14 @@ namespace Oni.Editor
 			EditorGUIUtility.labelWidth = labelWidth;
 			EditorGUI.indentLevel       = indent;
 		}
+
+		/// <summary>
+		/// Draws a horizontal divider bar
+		/// </summary>
+		/// <param name="pos">Rect to draw in</param>
+		public static void Divider(Rect pos)
+		{
+        	EditorGUI.LabelField(pos, "", GUI.skin.horizontalSlider);
+		}
 	}
 }

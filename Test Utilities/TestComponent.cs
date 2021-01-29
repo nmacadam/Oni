@@ -15,7 +15,7 @@ namespace Oni.TestUtilities
 	/// cleans up after itself
 	/// </remarks>
     /// <typeparam name="T">Component type to generate</typeparam>
-    public class TestComponent<T> where T : MonoBehaviour
+    public class TestComponent<T> where T : Component
     {
         private GameObject _gameObject;
 		private T _instance;

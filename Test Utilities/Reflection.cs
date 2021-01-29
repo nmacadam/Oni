@@ -1,13 +1,16 @@
-﻿// ONI, Copyright (c) Nathan MacAdam, All rights reserved. 
-// MIT License (See LICENSE file)
+// Dream Frontier, Copyright (c) DARUMA WORKS, All rights reserved.
+// Author: Nathan MacAdam
 
 using System.Reflection;
 
 namespace Oni.TestUtilities
 {
-	public static class Reflection
-	{
-		private static BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance | BindingFlags.FlattenHierarchy;
+    /// <summary>
+    /// Reflection based utilities for unit testing in Unity
+    /// </summary>
+    public static class Reflection
+    {
+        private static BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance | BindingFlags.FlattenHierarchy;
 
         /// <summary>
         /// Sets a field to the given value
@@ -179,5 +182,5 @@ namespace Oni.TestUtilities
 
             return info != null;
         }
-	}
+    }
 }

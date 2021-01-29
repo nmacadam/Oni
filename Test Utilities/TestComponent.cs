@@ -1,6 +1,7 @@
 ﻿// ONI, Copyright (c) Nathan MacAdam, All rights reserved. 
 // MIT License (See LICENSE file)
 
+using System;
 using UnityEngine;
 
 namespace Oni.TestUtilities
@@ -25,6 +26,27 @@ namespace Oni.TestUtilities
 		{
 			_gameObject = new GameObject();
 			_instance = _gameObject.AddComponent<T>();
+
+            if (_instance is IInitializeForTest initialize)
+			{
+				initialize.Initialize();
+			}
+		}
+
+        public TestComponent(params Type[] extraComponents)
+		{
+			_gameObject = new GameObject();
+			_instance = _gameObject.AddComponent<T>();
+
+            if (_instance is IInitializeForTest initialize)
+			{
+				initialize.Initialize();
+			}
+
+            foreach (var component in extraComponents)
+            {
+                _gameObject.AddComponent(component);
+            }
 		}
 
 		~TestComponent()

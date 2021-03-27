@@ -40,6 +40,8 @@ namespace Oni.Patterns
 		[Tooltip("How many instances should the pool start with?")]
 		[SerializeField] private int _initialSize = 1;
 
+		public T ClonableInstance => _clonableInstance;
+
 		private Queue<T> _pool = new Queue<T>();
 
 		private void Awake()
@@ -55,6 +57,11 @@ namespace Oni.Patterns
 		/// <summary> Retrieves an instance from the object pool </summary>
 		public T Get(bool setActive = true)
 		{
+			if (_clonableInstance == null)
+			{
+				return null;
+			}
+
 			if (_pool.Count == 0)
 			{
 				Add(1);

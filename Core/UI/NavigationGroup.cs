@@ -41,11 +41,13 @@ namespace Oni.UI
         public NavigationGroupDirection Direction { get => _direction; set => _direction = value; }
         public List<Selectable> Content { get => _content; set => _content = value; }
 
+#if UNITY_EDITOR
         protected override void OnValidate() 
 		{
 			base.OnValidate();
 			UpdateNavigation();
 		}
+#endif
 
 		protected virtual void OnTransformChildrenChanged()
         {

@@ -33,7 +33,7 @@ namespace Oni.Patterns
 	/// Implementation of the Object Pool pattern for MonoBehaviour based objects
 	/// </summary>
 	public class ObjectPool<T> : MonoBehaviour, IObjectPool<T>
-		where T : MonoBehaviour, IPoolable
+		where T : Component, IPoolable
 	{
 		[Tooltip("Provide a cloneable instance to initialize the pool with (typically a prefab)")]
 		[SerializeField] private T _clonableInstance = default;

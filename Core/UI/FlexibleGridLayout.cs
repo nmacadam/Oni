@@ -33,7 +33,7 @@ namespace Oni.UI
 		[SerializeField] private bool _fitY = default;
 		[SerializeField] private bool _ignoreInactive = true;
 
-        public FitType FitType1 { get => _fitType; set => _fitType = value; }
+        public FitType Fit { get => _fitType; set => _fitType = value; }
         public int Rows { get => _rows; set => _rows = value; }
         public int Columns { get => _columns; set => _columns = value; }
         public Vector2 CellSize { get => _cellSize; set => _cellSize = value; }

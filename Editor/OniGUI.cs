@@ -1,6 +1,7 @@
 ﻿// ONI, Copyright (c) Nathan MacAdam, All rights reserved. 
 // MIT License (See LICENSE file)
 
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -61,6 +62,20 @@ namespace Oni.Editor
 		public static void Divider(Rect pos)
 		{
         	EditorGUI.LabelField(pos, "", GUI.skin.horizontalSlider);
+		}
+
+		/// <summary>
+		/// Draws the default 'Script' reference field
+		/// </summary>
+		/// <param name="rect">The rect to draw this field in</param>
+		/// <param name="target">The MonoBehaviour for this component</param>
+		/// <param name="type">The script object type</param>
+		public static void ScriptField(Rect rect, MonoBehaviour target, Type type)
+		{
+			using (new EditorGUI.DisabledScope(true))
+			{
+				EditorGUI.ObjectField(rect, "Script", MonoScript.FromMonoBehaviour(target), type, false);
+			}
 		}
 	}
 }

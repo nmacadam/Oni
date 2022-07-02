@@ -12,6 +12,8 @@ namespace Oni.Editor
 	/// </summary>
 	public static class OniGUI
 	{
+		#region Drawing
+
 		/// <summary>
 		/// Draws a property with multiple property fields for sub-properties
 		/// </summary>
@@ -77,5 +79,22 @@ namespace Oni.Editor
 				EditorGUI.ObjectField(rect, "Script", MonoScript.FromMonoBehaviour(target), type, false);
 			}
 		}
+
+		#endregion
+
+		#region Formatting
+
+		public static Rect GetRectByLineNumber(Rect original, int line)
+		{
+			float heightModifier = (EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing) * (line - 1);
+
+			return new Rect(
+				original.x,
+				original.y + heightModifier,
+				original.width,
+				EditorGUIUtility.singleLineHeight);
+		}
+
+		#endregion
 	}
 }
